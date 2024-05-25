@@ -84,3 +84,9 @@ void my_memcpy(void* dest, const void* src, unsigned long bytes) {
 In this experiment we will try and redirect standard output of former program into the standard input of latter. 
 
 Let first program give 10 integers, second program will receive them and print their sum.
+
+That's how to do it:
+
+```console
+./25May24_from | ./25May24_to
+```
