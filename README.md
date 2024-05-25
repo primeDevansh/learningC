@@ -78,3 +78,9 @@ void my_memcpy(void* dest, const void* src, unsigned long bytes) {
     }
 }
 ```
+
+### Command-Line Input Redirection From 25May24_from.c to 25May24_to.c
+
+In this experiment we will try and redirect standard output of former program into the standard input of latter. 
+
+Let first program give 10 integers, second program will receive them and print their sum.
