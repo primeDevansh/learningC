@@ -90,3 +90,20 @@ That's how to do it:
 ```console
 ./25May24_from | ./25May24_to
 ```
+
+### ch7pg153_exercise7-1.c
+
+To write a program that converts upper case to lower or lower to upper, depending on the name it is invoked with, as found in argv[0].
+
+### Implicit pointer cast
+
+from lsearch_24May24.c
+```C
+int my_memcmp(void *elem1, void *elem2, int bytes) {
+    // char *e1 = (char *)elem1;
+    // char *e2 = (char *)elem2;
+
+    //what about removing the cast to char* !? Lecture 5, Su Notes Pg 3
+    char *e1 = elem1;
+    char *e2 = elem2;
+```

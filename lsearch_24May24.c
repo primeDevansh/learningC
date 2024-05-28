@@ -5,7 +5,7 @@ int my_memcmp(void *, void *, int);
 
 int main() {
     int arr[] = {5, 4, 3, 2, 1};
-    int key = 7;
+    int key = 2;
     int pos = lsearch(&key, arr, sizeof(arr) / sizeof(int), sizeof(int));
     printf("Element found at position: %d\n\n", pos);
     return 0;
@@ -21,8 +21,12 @@ int lsearch(void *key, void *base, int n, int elemSize) {
 }
 
 int my_memcmp(void *elem1, void *elem2, int bytes) {
-    char *e1 = (char *)elem1;
-    char *e2 = (char *)elem2;
+    // char *e1 = (char *)elem1;
+    // char *e2 = (char *)elem2;
+
+    //what about removing the cast to char* !? Lecture 5, Su Notes Pg 3
+    char *e1 = elem1;
+    char *e2 = elem2;
 
     while(bytes--) {
         if(*e1++ != *e2++)
