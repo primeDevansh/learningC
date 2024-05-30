@@ -7,22 +7,23 @@ int IntCmp(void *, void *);
 
 int main() {
     //for integer array LS
-    int arr[] = {5, 4, 3, 2, 1};
-    int key = 5;
+    // int arr[] = {5, 4, 3, 2, 1};
+    // int key = 1;
 
-    int *elemAddr = lsearch(&key, arr, sizeof(arr) / sizeof(int), sizeof(int), IntCmp);
+    // int *elemAddr = lsearch(&key, arr, sizeof(arr) / sizeof(int), sizeof(int), IntCmp);
 
-    printf("Element at address %p found!", elemAddr);
+    // printf("Element %d found at address %p found!\n", *elemAddr, elemAddr);
 
-    return 0;
-    //for character array linear search
-    // char *notes[] = {"Ab", "F#", "B", "Gb", "D"};
-    // char *key = "Gb";
-
-    // char *elemAddr = lsearch(key, notes, sizeof(notes) / sizeof(char *), sizeof(char *), StrCmp);
-
-    // printf("Element %s found!", elemAddr);
     // return 0;
+
+    //for character array linear search
+    char *notes[] = {"Ab", "F#", "B", "Gb", "D"};
+    char *key = "F#";
+
+    char **elemAddr = lsearch(&key, notes, sizeof(notes) / sizeof(char *), sizeof(char *), StrCmp);
+
+    printf("Element %s found!\n", *elemAddr);
+    return 0;
 }
 
 void *lsearch(void *key, void *base, int n, int elemSize, int (*cmpfn)(void *, void *)) {
@@ -35,10 +36,10 @@ void *lsearch(void *key, void *base, int n, int elemSize, int (*cmpfn)(void *, v
 }
 
 int StrCmp(void *elem1, void *elem2) {
-    char *str1 = elem1;
-    char *str2 = elem2;
+    char *str1 = *(char **)elem1;
+    char *str2 = *(char **)elem2;
 
-    return strcmp(str1, *str2);
+    return strcmp(str1, str2);
 }
 
 int IntCmp(void *vp1, void *vp2) {
