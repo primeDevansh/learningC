@@ -107,3 +107,49 @@ int my_memcmp(void *elem1, void *elem2, int bytes) {
     char *e1 = elem1;
     char *e2 = elem2;
 ```
+
+### Accessing a local variable from outside its scope
+
+Can we access a local variable by passing its address? Let's see: [code](./exp1_05June24.c).
+
+```C
+#include <stdio.h>
+
+int *myVar() {
+    int localVar = 5;
+    return &localVar;
+}
+
+int main() {
+    int *notMyVar = myVar();
+    printf("Out of scope Var accessible: %d\n", *notMyVar);
+    return 0;
+}
+```
+
+Conclusion: Was able to access it; but don't know what'd happen if somehow the memory originally associcated with localVar gets used up by someone else after it is free'd up.
+
+Here's the output:
+
+![Output](./Screenshot%202024-06-05%20at%201.05.02%20PM.png)
+
+Trying to take up original localVar's memory space by declaring more vars: -
+
+```C
+#include <stdio.h>
+
+int *myVar() {
+    int localVar = 5;
+    int localVar3 = 7;   //trying to take up space of localVar in the activation record.
+    return &localVar;
+}
+
+int main() {
+    int *notMyVar = myVar();
+    int localVar2 = 3; //trying to take up space of localVar in the activation record.
+    printf("Out of scope Var accessible: %d\n", *notMyVar);
+    return 0;
+}
+```
+
+Output: - Unaffected!

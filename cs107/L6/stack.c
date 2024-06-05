@@ -1,5 +1,6 @@
 #include "stack.h"
 #include <stdlib.h>     //for using free(), malloc, realloc, NULL
+#include <stdio.h>      //for printf()
 
 void StackNew(stack *s) {
     s -> logicalLen = 0;
